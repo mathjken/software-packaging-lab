@@ -123,3 +123,117 @@ npm scripts
 Environment variables
 Application verification
 Reproducibility
+
+
+Task 2 - Dependency Installation, Updates and Security
+Objective
+
+Practise dependency installation and management using npm, understand reproducible installations, check for outdated packages and audit dependencies for security vulnerabilities.
+
+npm install
+
+npm install installs the dependencies defined by the project's package configuration.
+
+The command used during the project was:
+
+npm install express
+
+This installed Express and its dependency tree into node_modules/, added Express to package.json and generated package-lock.json.
+
+npm install is commonly used during development when adding or managing dependencies.
+
+npm install --dry-run
+
+The following command was used to preview an installation without applying changes:
+
+npm install --dry-run
+
+The result was:
+
+up to date
+
+This demonstrated that npm found the existing dependency installation consistent with the project configuration.
+
+--dry-run is useful for previewing package-management operations before making changes.
+
+npm ci
+
+The project was then installed using:
+
+npm ci
+
+The result was:
+
+added 68 packages, and audited 69 packages
+
+npm ci means Clean Install.
+
+It is designed for clean and reproducible dependency installations and is particularly useful in automated CI/CD environments.
+
+Unlike a normal development installation, npm ci relies on the existing package-lock.json to reproduce the locked dependency tree.
+
+Conceptually:
+
+Git repository
+      ↓
+package.json + package-lock.json
+      ↓
+npm ci
+      ↓
+Clean dependency installation
+      ↓
+node_modules/
+
+This helps ensure that a CI/CD environment installs the dependency tree defined by the project rather than unexpectedly resolving a different dependency set.
+
+npm audit
+
+The project's dependencies were checked for known security vulnerabilities using:
+
+npm audit
+
+The result was:
+
+found 0 vulnerabilities
+
+This means npm reported no known vulnerabilities in the project's current dependency tree at the time of the audit.
+
+Dependency auditing is important because third-party packages form part of an application's software supply chain.
+
+npm outdated
+
+The following command was used to check whether dependencies had newer versions available:
+
+npm outdated
+
+No output was returned, indicating that npm found no outdated packages under the current dependency configuration.
+
+npm update
+
+npm update can be used to update dependencies within the version ranges permitted by package.json.
+
+It was not necessary to run it in this task because npm outdated reported no outdated dependencies.
+
+Avoiding unnecessary updates also prevents introducing unrelated dependency changes into the project.
+
+Dependency Management Summary
+Command	Purpose
+npm install	Install or manage project dependencies
+npm install --dry-run	Preview an installation without applying changes
+npm ci	Perform a clean, reproducible installation using the lockfile
+npm audit	Check dependencies for known security vulnerabilities
+npm outdated	Check for available dependency updates
+npm update	Update dependencies within permitted version ranges
+Task 2 Results
+
+The current project dependency state is:
+
+Direct dependency: Express
+Version: 5.2.1
+Security vulnerabilities: 0
+Outdated packages: None
+Task 2 Outcome
+
+The project demonstrated dependency installation, clean dependency reproduction, dependency auditing and update checking using npm.
+
+These practices are important in DevOps because applications need reliable and secure dependency management across development, testing and CI/CD environments.
