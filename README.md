@@ -669,3 +669,34 @@ Evidence:
 test/server.test.js
 npm test execution
 screenshots/testing.png
+
+
+## Artifact Integrity Verification
+
+The distributable package is verified using a SHA-256 checksum.
+
+### Generate Checksum
+
+```bash
+sha256sum dist/software-packaging-lab-1.0.1.tgz > dist/software-packaging-lab-1.0.1.tgz.sha256
+
+Generated SHA-256 checksum:
+
+f8fe4e8c5cda1d1ec94436b6fcdf25d1e1f6aa877a1e4bdcfdbef4d3865432f0
+Verify Artifact
+
+The artifact was verified using:
+
+sha256sum -c dist/software-packaging-lab-1.0.1.tgz.sha256
+
+Verification result:
+
+dist/software-packaging-lab-1.0.1.tgz: OK
+
+A successful OK result confirms that the packaged artifact matches the recorded SHA-256 checksum and has not changed since the checksum was generated.
+
+Evidence:
+
+dist/software-packaging-lab-1.0.1.tgz
+dist/software-packaging-lab-1.0.1.tgz.sha256
+SHA-256 verification output
