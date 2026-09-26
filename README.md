@@ -437,3 +437,59 @@ Screenshot:
 screenshots/task-4-configuration.png
 
 The screenshot shows the staging application running on port 4000 and the successful HTTP request using curl.
+
+
+## Task 5 — Create a Distributable Artifact
+
+### Objective
+
+Create a distributable package of the Node.js application that can be transferred and installed in another environment.
+
+### Packaging Method
+
+The application was packaged using npm's native packaging mechanism:
+
+```bash
+npm pack
+
+
+Before creating the final artifact, the package contents were previewed with:
+
+npm pack --dry-run
+
+A .npmignore file was used to exclude development and assessment files such as:
+
+node_modules/
+screenshots/
+Git metadata
+.env files
+existing .tgz artifacts
+Generated Artifact
+
+The final distributable package is:
+
+dist/software-packaging-lab-1.0.1.tgz
+
+The artifact was inspected with:
+
+tar -tzf software-packaging-lab-1.0.1.tgz
+
+The final package contains:
+
+package/README.md
+package/config/development.env.example
+package/config/staging.env.example
+package/package.json
+package/src/server.js
+
+The generated artifact is approximately 4.2 KB.
+
+Outcome
+
+A clean, portable Node.js package was successfully created. The package contains the application source, package metadata, environment configuration examples, and documentation, while excluding screenshots, development dependencies, Git files, and environment secrets.
+
+Evidence
+
+Screenshot:
+
+screenshots/task-5-build.png
