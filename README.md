@@ -571,3 +571,52 @@ Evidence
 Screenshot:
 
 screenshots/task-6-packaged-app.png
+
+
+## Task 7 — Security Audit of Dependencies
+
+### Objective
+
+Audit the application's third-party dependencies for known security vulnerabilities and check whether any dependencies require updates.
+
+### Security Audit
+
+The dependency tree was audited using:
+
+```bash
+npm audit
+
+Result:
+
+found 0 vulnerabilities
+
+No known vulnerabilities were reported in the installed dependency tree at the time of the audit.
+
+Dependency Verification
+
+The project's top-level dependency was verified using:
+
+npm list --depth=0
+
+Result:
+
+software-packaging-lab@1.0.1
+└── express@5.2.1
+
+The project was also checked for outdated dependencies using:
+
+npm outdated
+
+No outdated dependencies were reported.
+
+Security Result
+
+The dependency audit completed successfully with no known vulnerabilities reported. The project also had no outdated dependencies reported by npm at the time of verification.
+
+Dependency security is important because third-party packages form part of the application's software supply chain.
+
+Evidence
+
+Screenshot:
+
+screenshots/task-7-security-audit.png
