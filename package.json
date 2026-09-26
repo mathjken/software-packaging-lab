@@ -1,13 +1,19 @@
 {
   "name": "software-packaging-lab",
   "version": "1.0.0",
-  "description": "",
+  "description": "A Node.js application demonstrating software packaging, dependency management, semantic versioning, and environment configuration.",
   "main": "index.js",
   "scripts": {
     "start": "node src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "node.js",
+    "express",
+    "software-packaging",
+    "devops",
+    "semantic-versioning"
+  ],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
