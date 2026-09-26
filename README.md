@@ -352,3 +352,88 @@ screenshots/task-3-versioning.png
 ### Outcome
 
 Application metadata was configured and the project successfully adopted Semantic Versioning. Version `1.0.1` was created, tagged, and published to the GitHub repository.
+
+
+
+## Task 4: Environment-Specific Configuration
+
+### Objective
+
+Separate environment-specific configuration from the core application code so that the same application can be deployed to different environments without modifying the application itself.
+
+### Environment Configuration
+
+The application reads configuration values from environment variables:
+
+- `NODE_ENV` identifies the deployment environment.
+- `PORT` determines the network port used by the application.
+
+The application uses default values when these variables are not supplied:
+
+```javascript
+const PORT = process.env.PORT || 3000;
+const NODE_ENV = process.env.NODE_ENV || "development";
+
+Environment configuration templates were created for development and staging:
+
+config/development.env.example
+config/staging.env.example
+
+Development configuration:
+
+NODE_ENV=development
+PORT=3000
+
+Staging configuration:
+
+NODE_ENV=staging
+PORT=4000
+Verification
+
+The same application was executed using different environment variables.
+
+Development
+NODE_ENV=development PORT=3000 npm start
+
+Result:
+
+Server running on port 3000 in development environment
+
+The application was then verified with:
+
+curl http://localhost:3000
+
+Result:
+
+Software Packaging Lab is running!
+Staging
+NODE_ENV=staging PORT=4000 npm start
+
+Result:
+
+Server running on port 4000 in staging environment
+
+The application was then verified with:
+
+curl http://localhost:4000
+
+Result:
+
+Software Packaging Lab is running!
+Configuration Strategy
+
+The application code remains unchanged between environments. Only the environment variables change.
+
+Environment	NODE_ENV	PORT
+Development	development	3000
+Staging	staging	4000
+
+This demonstrates deployment flexibility because the same application can operate with different environment-specific settings without modifying its source code.
+
+Evidence
+
+Screenshot:
+
+screenshots/task-4-configuration.png
+
+The screenshot shows the staging application running on port 4000 and the successful HTTP request using curl.
