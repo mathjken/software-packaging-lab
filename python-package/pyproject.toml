@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "software-packaging-demo"
+version = "1.0.0"
+description = "A small Python package demonstrating modern software packaging."
+requires-python = ">=3.9"
+authors = [
+    {name = "Software Packaging Lab"}
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -700,3 +700,56 @@ Evidence:
 dist/software-packaging-lab-1.0.1.tgz
 dist/software-packaging-lab-1.0.1.tgz.sha256
 SHA-256 verification output
+
+
+## Python Packaging Support
+
+To demonstrate multi-language packaging, a Python package was added under `python-package/`.
+
+The Python project uses the modern `pyproject.toml` configuration standard with setuptools as its build backend.
+
+### Python Package Metadata
+
+The package is named:
+
+```text
+software-packaging-demo
+
+Version:
+
+1.0.0
+Python Testing
+
+The package was validated using:
+
+cd python-package
+python3 test_package.py
+
+Result:
+
+Python package test passed
+Python Build
+
+An isolated Python virtual environment was used for the build:
+
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install build
+
+The package was built using:
+
+python -m build
+
+The build successfully generated:
+
+python-package/dist/software_packaging_demo-1.0.0.tar.gz
+python-package/dist/software_packaging_demo-1.0.0-py3-none-any.whl
+Artifact Verification
+
+The generated wheel was inspected using:
+
+python -m zipfile -l dist/software_packaging_demo-1.0.0-py3-none-any.whl
+
+The wheel contains the Python package and standard distribution metadata including METADATA, WHEEL, and RECORD.
+
+This Python implementation demonstrates packaging concepts across more than one programming language, complementing the primary Node.js packaging implementation.
