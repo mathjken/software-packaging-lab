@@ -753,3 +753,26 @@ python -m zipfile -l dist/software_packaging_demo-1.0.0-py3-none-any.whl
 The wheel contains the Python package and standard distribution metadata including METADATA, WHEEL, and RECORD.
 
 This Python implementation demonstrates packaging concepts across more than one programming language, complementing the primary Node.js packaging implementation.
+
+
+### Python Artifact Integrity
+
+SHA-256 checksums were generated for both Python distribution artifacts:
+
+```bash
+sha256sum python-package/dist/* > python-package/dist/SHA256SUMS
+
+The recorded checksums are stored in:
+
+python-package/dist/SHA256SUMS
+
+The artifacts were verified using:
+
+sha256sum -c python-package/dist/SHA256SUMS
+
+Verification result:
+
+python-package/dist/software_packaging_demo-1.0.0-py3-none-any.whl: OK
+python-package/dist/software_packaging_demo-1.0.0.tar.gz: OK
+
+Both Python distribution artifacts passed SHA-256 integrity verification.
