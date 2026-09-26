@@ -1,6 +1,6 @@
 {
   "name": "software-packaging-lab",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Node.js application demonstrating software packaging, dependency management, semantic versioning, and environment configuration.",
   "main": "index.js",
   "scripts": {
