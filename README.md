@@ -493,3 +493,81 @@ Evidence
 Screenshot:
 
 screenshots/task-5-build.png
+
+
+## Task 6 — Verify Packaged Application
+
+### Objective
+
+Verify that the distributable artifact created in Task 5 can be deployed and executed successfully in separate development and staging environments.
+
+### Development Environment
+
+The packaged artifact was extracted into a clean temporary environment:
+
+```bash
+mkdir -p /tmp/software-packaging-dev
+tar -xzf ~/software-packaging-lab/dist/software-packaging-lab-1.0.1.tgz -C /tmp/software-packaging-dev --strip-components=1
+cd /tmp/software-packaging-dev
+
+Dependencies were installed using:
+
+npm install
+
+The application was then started with development-specific configuration:
+
+NODE_ENV=development PORT=3000 npm start
+
+The application reported:
+
+Server running on port 3000 in development environment
+
+The application was verified using:
+
+curl http://localhost:3000
+
+Response:
+
+Software Packaging Lab is running!
+Staging Environment
+
+The same distributable artifact was extracted into a separate staging environment:
+
+mkdir -p /tmp/software-packaging-staging
+tar -xzf ~/software-packaging-lab/dist/software-packaging-lab-1.0.1.tgz -C /tmp/software-packaging-staging --strip-components=1
+cd /tmp/software-packaging-staging
+
+Dependencies were installed using:
+
+npm install
+
+The application was started with staging-specific configuration:
+
+NODE_ENV=staging PORT=4000 npm start
+
+The application reported:
+
+Server running on port 4000 in staging environment
+
+The application was verified using:
+
+curl http://localhost:4000
+
+Response:
+
+Software Packaging Lab is running!
+Verification Result
+
+The same software-packaging-lab-1.0.1.tgz artifact was successfully deployed and executed in both environments.
+
+Environment	Port	Verification
+Development	3000	Successful
+Staging	4000	Successful
+
+This demonstrates that the packaged application can be transferred to a clean environment, have its dependencies installed, and run with environment-specific configuration.
+
+Evidence
+
+Screenshot:
+
+screenshots/task-6-packaged-app.png
