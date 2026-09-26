@@ -620,3 +620,52 @@ Evidence
 Screenshot:
 
 screenshots/task-7-security-audit.png
+
+
+## Testing and Validation
+
+Automated testing was added using Node.js's built-in `node:test` framework.
+
+### Test Configuration
+
+The `package.json` test script runs:
+
+```bash
+npm test
+
+This executes the test suite using:
+
+node --test
+Test Coverage
+
+The test in test/server.test.js validates the actual Express application by:
+
+Starting the Express application on an automatically assigned port.
+Sending a GET / HTTP request.
+Verifying that the HTTP status code is 200.
+Verifying that the expected response is returned.
+Closing the test server after execution.
+Test Execution
+
+Command:
+
+npm test
+
+Result:
+
+✔ GET / returns the expected response
+ℹ tests 1
+ℹ pass 1
+ℹ fail 0
+
+The automated test completed successfully with zero failures.
+
+Testing Outcome
+
+The test confirms that the packaged application's main HTTP endpoint responds correctly and provides automated validation that can be executed consistently during development or CI/CD.
+
+Evidence:
+
+test/server.test.js
+npm test execution
+screenshots/testing.png

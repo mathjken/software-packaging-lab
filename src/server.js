@@ -8,6 +8,10 @@ app.get("/", (req, res) => {
     res.send("Software Packaging Lab is running!");
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT} in ${NODE_ENV} environment`);
-});
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT} in ${NODE_ENV} environment`);
+    });
+}
+
+module.exports = app;
