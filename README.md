@@ -237,3 +237,118 @@ Task 2 Outcome
 The project demonstrated dependency installation, clean dependency reproduction, dependency auditing and update checking using npm.
 
 These practices are important in DevOps because applications need reliable and secure dependency management across development, testing and CI/CD environments.
+
+
+## Task 3: Application Metadata and Semantic Versioning
+
+### Objective
+
+Configure application metadata and apply Semantic Versioning (MAJOR.MINOR.PATCH) to the Node.js project.
+
+### Application Metadata
+
+The project metadata is defined in `package.json`. The following fields were configured:
+
+* **Name:** `software-packaging-lab`
+* **Description:** Describes the purpose of the application and the packaging concepts demonstrated.
+* **Keywords:** Added relevant terms including Node.js, Express, software packaging, DevOps, and semantic versioning.
+* **Type:** `commonjs`
+* **Start script:** `node src/server.js`
+
+The `package.json` file was validated using:
+
+```bash
+node -e "JSON.parse(require('fs').readFileSync('package.json')); console.log('package.json is valid JSON')"
+```
+
+Validation confirmed that the file contains valid JSON.
+
+### Semantic Versioning
+
+Semantic Versioning uses the format:
+
+```text
+MAJOR.MINOR.PATCH
+```
+
+The project initially used version `1.0.0`.
+
+A PATCH release was then created using:
+
+```bash
+npm version patch
+```
+
+This changed the application version from:
+
+```text
+1.0.0 → 1.0.1
+```
+
+A PATCH increment is appropriate for a backward-compatible bug fix or maintenance release that does not introduce breaking changes or a new feature requiring a MINOR version increment.
+
+The command also automatically:
+
+1. Updated the version in `package.json`.
+2. Updated the project version recorded in `package-lock.json`.
+3. Created a Git commit for version `1.0.1`.
+4. Created the Git tag `v1.0.1`.
+
+The release was published to GitHub using:
+
+```bash
+git push --follow-tags
+```
+
+### Versioning Strategy
+
+The project follows the following Semantic Versioning convention:
+
+| Version component | Purpose                                      | Example         |
+| ----------------- | -------------------------------------------- | --------------- |
+| MAJOR             | Breaking or incompatible changes             | `1.0.0 → 2.0.0` |
+| MINOR             | Backward-compatible new functionality        | `1.0.0 → 1.1.0` |
+| PATCH             | Backward-compatible bug fixes or maintenance | `1.0.0 → 1.0.1` |
+
+### Application Version vs Dependency Version
+
+The application's version and its dependency versions serve different purposes.
+
+The application version is:
+
+```text
+software-packaging-lab: 1.0.1
+```
+
+The Express dependency is specified as:
+
+```json
+"express": "^5.2.1"
+```
+
+`1.0.1` identifies a release of this application, while `^5.2.1` specifies an acceptable version range for the Express dependency.
+
+### Verification
+
+The release was verified using Git:
+
+```bash
+git log --oneline -3
+git tag
+```
+
+The Git history showed the version commit and the `v1.0.1` tag.
+
+The working tree was clean and the commit and tag were successfully pushed to GitHub.
+
+### Evidence
+
+Task 3 evidence is available in:
+
+```text
+screenshots/task-3-versioning.png
+```
+
+### Outcome
+
+Application metadata was configured and the project successfully adopted Semantic Versioning. Version `1.0.1` was created, tagged, and published to the GitHub repository.
